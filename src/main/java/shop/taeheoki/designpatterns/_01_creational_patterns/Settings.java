@@ -1,20 +1,17 @@
 package shop.taeheoki.designpatterns._01_creational_patterns;
 
-import java.io.Serializable;
+public enum Settings {
+    INSTANCE;
 
-public class Settings implements Serializable {
+    Settings() {}
 
-    private Settings() {}
+    private Integer number;
 
-    private static class SettingsHolder {
-        private static final Settings INSTANCE = new Settings();
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
-    public static Settings getInstance() {
-        return SettingsHolder.INSTANCE;
-    }
-
-    protected Object readResolve() { // 역질렬화시 사용되는 메서드
-        return getInstance();
+    public Integer getNumber() {
+        return this.number;
     }
 }
