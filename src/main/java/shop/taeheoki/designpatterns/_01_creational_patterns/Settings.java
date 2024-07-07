@@ -1,6 +1,8 @@
 package shop.taeheoki.designpatterns._01_creational_patterns;
 
-public class Settings {
+import java.io.Serializable;
+
+public class Settings implements Serializable {
 
     private Settings() {}
 
@@ -10,5 +12,9 @@ public class Settings {
 
     public static Settings getInstance() {
         return SettingsHolder.INSTANCE;
+    }
+
+    protected Object readResolve() { // 역질렬화시 사용되는 메서드
+        return getInstance();
     }
 }
